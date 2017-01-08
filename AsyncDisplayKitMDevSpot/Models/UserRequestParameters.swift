@@ -10,13 +10,19 @@ import Foundation
 import ObjectMapper
 
 class UserRequestParameters : JSONValue {
-    required init?(map: Map) {
-        
+    var page : Int
+    var perPage : Int
+    
+    init(page: Int = 1, perPage: Int = 40) {
+        self.page = page
+        self.perPage = perPage
+    }
+    convenience required init?(map: Map) {
+        self.init()
     }
     
     func mapping(map: Map) {
-        
+        page <- map["page"]
+        perPage <- map["results"]
     }
-    
-    init() {}
 }

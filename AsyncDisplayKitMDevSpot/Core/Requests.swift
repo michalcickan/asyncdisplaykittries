@@ -21,21 +21,23 @@ extension JSONValue {
 }
 
 class Request<T: Mappable> {
-    private(set) var parameters : JSONValue?
+    /*private(set)*/ var parameters : JSONValue?
     var url : String {
         return Config.BaseURL
     }
     typealias RequstCompletionHandler = (_ success: Bool, _ object: T?,_ error: Error?) -> Void
     typealias ObjecType = T
     
+    fileprivate lazy var manager : Alamofire.SessionManager = {
+         return Alamofire.SessionManager(configuration: URLSessionConfiguration.default)
+    }()
+    
     var request : DataRequest {
-        let manager = Alamofire.SessionManager(configuration: URLSessionConfiguration.default)
         return manager.request(
             url,
             parameters: self.parameters?.jsonValue
         )
     }
-    
     
     func performRequest(completion: RequstCompletionHandler?) {
         request.responseJSON(
@@ -48,7 +50,6 @@ class Request<T: Mappable> {
                 switch response.result {
                 case .success(let json):
                     result = Mapper<ObjecType>().map(JSONObject: json)
-                    break
                 case .failure(let err):
                     error = err
                 }

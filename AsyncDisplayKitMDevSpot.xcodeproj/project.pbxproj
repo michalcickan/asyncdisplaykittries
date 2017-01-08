@@ -18,6 +18,8 @@
 		141962AB1E21C24900A1485A /* UserRequestParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141962AA1E21C24900A1485A /* UserRequestParameters.swift */; };
 		141962AD1E21C92F00A1485A /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141962AC1E21C92F00A1485A /* Config.swift */; };
 		141962AF1E21CAB200A1485A /* UserListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141962AE1E21CAB200A1485A /* UserListModel.swift */; };
+		141962B21E21D5AA00A1485A /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141962B11E21D5AA00A1485A /* UserViewModel.swift */; };
+		141962B41E21D7E000A1485A /* NameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141962B31E21D7E000A1485A /* NameModel.swift */; };
 		3BB946B4D4968A0AD624F797 /* Pods_AsyncDisplayKitMDevSpot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DBA3C29D30869E7DB4C23CD /* Pods_AsyncDisplayKitMDevSpot.framework */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +37,8 @@
 		141962AA1E21C24900A1485A /* UserRequestParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserRequestParameters.swift; path = Models/UserRequestParameters.swift; sourceTree = "<group>"; };
 		141962AC1E21C92F00A1485A /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Config.swift; path = Core/Config.swift; sourceTree = "<group>"; };
 		141962AE1E21CAB200A1485A /* UserListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserListModel.swift; path = Models/UserListModel.swift; sourceTree = "<group>"; };
+		141962B11E21D5AA00A1485A /* UserViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserViewModel.swift; path = ViewModels/UserViewModel.swift; sourceTree = "<group>"; };
+		141962B31E21D7E000A1485A /* NameModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NameModel.swift; path = Models/NameModel.swift; sourceTree = "<group>"; };
 		3DBA3C29D30869E7DB4C23CD /* Pods_AsyncDisplayKitMDevSpot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AsyncDisplayKitMDevSpot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65AA41F83056ABF508724691 /* Pods-AsyncDisplayKitMDevSpot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AsyncDisplayKitMDevSpot.release.xcconfig"; path = "Pods/Target Support Files/Pods-AsyncDisplayKitMDevSpot/Pods-AsyncDisplayKitMDevSpot.release.xcconfig"; sourceTree = "<group>"; };
 		82C3BC741AFFFFBAB335E03D /* Pods-AsyncDisplayKitMDevSpot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AsyncDisplayKitMDevSpot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AsyncDisplayKitMDevSpot/Pods-AsyncDisplayKitMDevSpot.debug.xcconfig"; sourceTree = "<group>"; };
@@ -74,6 +78,7 @@
 		141962881E21B92900A1485A /* AsyncDisplayKitMDevSpot */ = {
 			isa = PBXGroup;
 			children = (
+				141962B01E21D59000A1485A /* ViewModels */,
 				141962A71E21C1CF00A1485A /* Core */,
 				141962A41E21C08000A1485A /* DataSource */,
 				1419629D1E21B94400A1485A /* Models */,
@@ -92,6 +97,7 @@
 				141962A21E21BEB400A1485A /* PictureModel.swift */,
 				141962AA1E21C24900A1485A /* UserRequestParameters.swift */,
 				141962AE1E21CAB200A1485A /* UserListModel.swift */,
+				141962B31E21D7E000A1485A /* NameModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -111,6 +117,14 @@
 				141962AC1E21C92F00A1485A /* Config.swift */,
 			);
 			name = Core;
+			sourceTree = "<group>";
+		};
+		141962B01E21D59000A1485A /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				141962B11E21D5AA00A1485A /* UserViewModel.swift */,
+			);
+			name = ViewModels;
 			sourceTree = "<group>";
 		};
 		41CF6B5E4F4169CF3A6FA182 /* Pods */ = {
@@ -260,7 +274,9 @@
 				141962A91E21C1FA00A1485A /* Requests.swift in Sources */,
 				141962AD1E21C92F00A1485A /* Config.swift in Sources */,
 				141962A11E21BC3700A1485A /* UserModel.swift in Sources */,
+				141962B41E21D7E000A1485A /* NameModel.swift in Sources */,
 				141962AB1E21C24900A1485A /* UserRequestParameters.swift in Sources */,
+				141962B21E21D5AA00A1485A /* UserViewModel.swift in Sources */,
 				1419628A1E21B92900A1485A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

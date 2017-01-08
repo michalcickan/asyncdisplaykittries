@@ -52,18 +52,22 @@ struct UserModel: Mappable {
     let email : String?
     let phone : String?
     let nationality: String?
-    let picture : PictureModel?
+    let pictureModel : PictureModel?
     let userName : String?
     let id : String?
+    let nameModel: NameModel?
+    let registered: Date?
     
     init?(map: Map) {
         gender = try? map.value("gender")
         email = try? map.value("email")
         phone = try? map.value("phone")
         nationality = try? map.value("nat")
-        picture = try? map.value("picture")
+        pictureModel = try? map.value("picture")
         userName = try? map.value("username")
         id = try? map.value("id.value")
+        nameModel = map["name"].value()
+        registered = try? map.value("registered", using: DateTransform())
     }
  
     mutating func mapping(map: Map) {
