@@ -17,6 +17,8 @@ protocol UserViewModelProtocol {
     var description: String { get }
     var email: String { get }
     var aboutText: String { get }
+    var genderText: String { get }
+    
     func photoUrl(quality: PhotoQualityEnum) -> URL?
     
 }
@@ -40,7 +42,16 @@ class UserViewModel : UserViewModelProtocol {
             return picture.thumbnail
         }
     }
-    
+    internal var genderText: String {
+        guard let gender = userModel.gender else { return "shemale" }
+        
+        switch gender {
+        case "male":
+            return "woman"
+        default:
+            return "man"
+        }
+    }
     internal var aboutText: String {
         let regString = userModel.registered!
         return "\(self.fullName) is \(self.userModel.gender!) and is very good painter as all people here. We noticed that great day, when he joined us on \(regString) \(self.fullName) doesn't need any letter box because we can reach \(self.fullName) at \(userModel.email!). Isn't it good to not kill woods? Apple Liam can be an example of good approach to environment. Howgh"

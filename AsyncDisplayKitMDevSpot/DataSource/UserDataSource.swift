@@ -9,9 +9,9 @@
 import Foundation
 
 class UserDataSource {
-    fileprivate var parameters = UserRequestParameters()
-    var userViewModels = [UserViewModel]()
+    typealias UserDataSourceCompletiontHandlerType = (_ insertedIndices: [Int]) -> Void
     
+    fileprivate var parameters = UserRequestParameters()
     fileprivate lazy var request : Request<UserListModel> = {
         let req = Request<UserListModel>()
         req.parameters = self.parameters
@@ -19,26 +19,35 @@ class UserDataSource {
         return req
     }()
     
-    func fetchUsers() {
+    var userViewModels = [UserViewModel]()
+    
+    // MARK: - Fetching
+    func fetchUsers(completionHandler: UserDataSourceCompletiontHandlerType?) {
         request.performRequest(completion: {[weak self] success, userList, error in
             guard let strongSelf = self else { return }
             
             if let users = userList?.users, success {
+                let initialIndex = strongSelf.userViewModels.count
+                
                 strongSelf.userViewModels.append(
                     contentsOf:
                     users.map({
                         UserViewModel(userModel: $0)
                     })
                 )
-                
-                print("")
+                let endIndex = strongSelf.userViewModels.count
+                if initialIndex < endIndex {
+                    completionHandler?(
+                        Array(initialIndex..<endIndex)
+                    )
+                }
             }
         })
     }
     
-    func fetchNext() {
+    func fetchNext(completionHandler: UserDataSourceCompletiontHandlerType?) {
         self.parameters.page += 1
         
-        self.fetchUsers()
+        self.fetchUsers(completionHandler: completionHandler)
     }
 }

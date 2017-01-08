@@ -20,6 +20,10 @@
 		141962AF1E21CAB200A1485A /* UserListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141962AE1E21CAB200A1485A /* UserListModel.swift */; };
 		141962B21E21D5AA00A1485A /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141962B11E21D5AA00A1485A /* UserViewModel.swift */; };
 		141962B41E21D7E000A1485A /* NameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141962B31E21D7E000A1485A /* NameModel.swift */; };
+		141962B61E22785400A1485A /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141962B51E22785400A1485A /* TableViewController.swift */; };
+		141962B81E228BDD00A1485A /* PagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141962B71E228BDD00A1485A /* PagerViewController.swift */; };
+		141962BB1E228BFB00A1485A /* AnimationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141962BA1E228BFB00A1485A /* AnimationsViewController.swift */; };
+		141962BD1E22AA4700A1485A /* UserCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141962BC1E22AA4700A1485A /* UserCellNode.swift */; };
 		3BB946B4D4968A0AD624F797 /* Pods_AsyncDisplayKitMDevSpot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DBA3C29D30869E7DB4C23CD /* Pods_AsyncDisplayKitMDevSpot.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +43,10 @@
 		141962AE1E21CAB200A1485A /* UserListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserListModel.swift; path = Models/UserListModel.swift; sourceTree = "<group>"; };
 		141962B11E21D5AA00A1485A /* UserViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserViewModel.swift; path = ViewModels/UserViewModel.swift; sourceTree = "<group>"; };
 		141962B31E21D7E000A1485A /* NameModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NameModel.swift; path = Models/NameModel.swift; sourceTree = "<group>"; };
+		141962B51E22785400A1485A /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewController.swift; path = ViewControllers/TableViewController.swift; sourceTree = "<group>"; };
+		141962B71E228BDD00A1485A /* PagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PagerViewController.swift; path = ViewControllers/PagerViewController.swift; sourceTree = "<group>"; };
+		141962BA1E228BFB00A1485A /* AnimationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnimationsViewController.swift; path = ViewControllers/AnimationsViewController.swift; sourceTree = "<group>"; };
+		141962BC1E22AA4700A1485A /* UserCellNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserCellNode.swift; path = Nodes/UserCellNode.swift; sourceTree = "<group>"; };
 		3DBA3C29D30869E7DB4C23CD /* Pods_AsyncDisplayKitMDevSpot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AsyncDisplayKitMDevSpot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65AA41F83056ABF508724691 /* Pods-AsyncDisplayKitMDevSpot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AsyncDisplayKitMDevSpot.release.xcconfig"; path = "Pods/Target Support Files/Pods-AsyncDisplayKitMDevSpot/Pods-AsyncDisplayKitMDevSpot.release.xcconfig"; sourceTree = "<group>"; };
 		82C3BC741AFFFFBAB335E03D /* Pods-AsyncDisplayKitMDevSpot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AsyncDisplayKitMDevSpot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AsyncDisplayKitMDevSpot/Pods-AsyncDisplayKitMDevSpot.debug.xcconfig"; sourceTree = "<group>"; };
@@ -86,6 +94,8 @@
 				141962921E21B92900A1485A /* Assets.xcassets */,
 				141962941E21B92900A1485A /* LaunchScreen.storyboard */,
 				141962971E21B92900A1485A /* Info.plist */,
+				141962B91E228BE500A1485A /* ViewControllers */,
+				141962BE1E22B60C00A1485A /* Nodes */,
 			);
 			path = AsyncDisplayKitMDevSpot;
 			sourceTree = "<group>";
@@ -125,6 +135,24 @@
 				141962B11E21D5AA00A1485A /* UserViewModel.swift */,
 			);
 			name = ViewModels;
+			sourceTree = "<group>";
+		};
+		141962B91E228BE500A1485A /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				141962B51E22785400A1485A /* TableViewController.swift */,
+				141962B71E228BDD00A1485A /* PagerViewController.swift */,
+				141962BA1E228BFB00A1485A /* AnimationsViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		141962BE1E22B60C00A1485A /* Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				141962BC1E22AA4700A1485A /* UserCellNode.swift */,
+			);
+			name = Nodes;
 			sourceTree = "<group>";
 		};
 		41CF6B5E4F4169CF3A6FA182 /* Pods */ = {
@@ -268,12 +296,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				141962BD1E22AA4700A1485A /* UserCellNode.swift in Sources */,
 				141962A31E21BEB400A1485A /* PictureModel.swift in Sources */,
 				141962A61E21C0BE00A1485A /* UserDataSource.swift in Sources */,
+				141962BB1E228BFB00A1485A /* AnimationsViewController.swift in Sources */,
 				141962AF1E21CAB200A1485A /* UserListModel.swift in Sources */,
 				141962A91E21C1FA00A1485A /* Requests.swift in Sources */,
 				141962AD1E21C92F00A1485A /* Config.swift in Sources */,
 				141962A11E21BC3700A1485A /* UserModel.swift in Sources */,
+				141962B81E228BDD00A1485A /* PagerViewController.swift in Sources */,
+				141962B61E22785400A1485A /* TableViewController.swift in Sources */,
 				141962B41E21D7E000A1485A /* NameModel.swift in Sources */,
 				141962AB1E21C24900A1485A /* UserRequestParameters.swift in Sources */,
 				141962B21E21D5AA00A1485A /* UserViewModel.swift in Sources */,
