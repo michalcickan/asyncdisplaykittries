@@ -57,6 +57,10 @@ class UserCellNode: ASCellNode {
         textNode.attributedText = NSAttributedString(string: userViewModel.aboutText)
         //self.addSubnode(textNode)
         
+        fullscreenPhotoNode.placeholderColor = .gray
+        fullscreenPhotoNode.url = userViewModel.photoUrl(quality: .Full)
+        fullscreenPhotoNode.placeholderFadeDuration = 2
+        fullscreenPhotoNode.contentMode = .scaleAspectFill
         
     }
     
@@ -88,10 +92,16 @@ class UserCellNode: ASCellNode {
             
             return modifiedImage;
         }
+        
+        avatarNode.shouldRasterizeDescendants = true
     }
     
     // MARK: - Layout computing
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
+        // make fullscreen image ratio to 1:2
+        self.fullscreenPhotoNode.style.width = ASDimensionMake("100%")
+        let aspectLayout = ASRatioLayoutSpec(ratio: 1/2, child: self.fullscreenPhotoNode)
+        
         //info layout
         var infoSpecElems = [nameNode]
         if !userViewModel.description.isEmpty {
@@ -110,7 +120,7 @@ class UserCellNode: ASCellNode {
             spacing: 5,
             justifyContent: .end,
             alignItems: .start,
-            children: [horizontalInfoLayout, self.textNode]
+            children: [horizontalInfoLayout, self.textNode, aspectLayout]
         )
         //in order to not let text node grow behind bounds, we need to set flex shrink, otherwise it won't calculate height and will continue behind right edge
         contentLayout.style.flexShrink = 1
