@@ -56,7 +56,7 @@ struct UserModel: Mappable {
     let userName : String?
     let id : String?
     let nameModel: NameModel?
-    let registered: Date?
+    let registered: String?
     
     init?(map: Map) {
         gender = try? map.value("gender")
@@ -66,8 +66,8 @@ struct UserModel: Mappable {
         pictureModel = try? map.value("picture")
         userName = try? map.value("username")
         id = try? map.value("id.value")
-        nameModel = map["name"].value()
-        registered = try? map.value("registered", using: DateTransform())
+        nameModel = try? map.value("name")
+        registered = map["registered"].value()
     }
  
     mutating func mapping(map: Map) {

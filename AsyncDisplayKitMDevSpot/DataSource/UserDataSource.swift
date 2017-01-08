@@ -9,7 +9,7 @@
 import Foundation
 
 class UserDataSource {
-    var parameters = UserRequestParameters()
+    fileprivate var parameters = UserRequestParameters()
     var userViewModels = [UserViewModel]()
     
     fileprivate lazy var request : Request<UserListModel> = {
@@ -20,9 +20,11 @@ class UserDataSource {
     }()
     
     func fetchUsers() {
-        request.performRequest(completion: { success, userList, error in
+        request.performRequest(completion: {[weak self] success, userList, error in
+            guard let strongSelf = self else { return }
+            
             if let users = userList?.users, success {
-                self.userViewModels.append(
+                strongSelf.userViewModels.append(
                     contentsOf:
                     users.map({
                         UserViewModel(userModel: $0)
@@ -32,5 +34,11 @@ class UserDataSource {
                 print("")
             }
         })
+    }
+    
+    func fetchNext() {
+        self.parameters.page += 1
+        
+        self.fetchUsers()
     }
 }

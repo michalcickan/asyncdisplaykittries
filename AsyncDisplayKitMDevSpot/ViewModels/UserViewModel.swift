@@ -23,11 +23,9 @@ protocol UserViewModelProtocol {
 
 class UserViewModel : UserViewModelProtocol {
     let userModel: UserModel
-    var dateFormatter = DateFormatter()
     
     init(userModel: UserModel) {
         self.userModel = userModel
-        dateFormatter.dateFormat = "yyyy-MM-dd"
     }
     
     internal func photoUrl(quality: PhotoQualityEnum) -> URL? {
@@ -44,7 +42,7 @@ class UserViewModel : UserViewModelProtocol {
     }
     
     internal var aboutText: String {
-        let regString = dateFormatter.string(from: userModel.registered!)
+        let regString = userModel.registered!
         return "\(self.fullName) is \(self.userModel.gender!) and is very good painter as all people here. We noticed that great day, when he joined us on \(regString) \(self.fullName) doesn't need any letter box because we can reach \(self.fullName) at \(userModel.email!). Isn't it good to not kill woods? Apple Liam can be an example of good approach to environment. Howgh"
     }
     
@@ -69,7 +67,7 @@ class UserViewModel : UserViewModelProtocol {
     internal var fullName: String {
         guard let name = userModel.nameModel else { return ""}
         
-        return name.name! + name.surname!
+        return "\(name.name!) \(name.surname!)"
     }
 
 }
