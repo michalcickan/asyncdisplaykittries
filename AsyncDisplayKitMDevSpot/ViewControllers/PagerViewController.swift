@@ -18,7 +18,7 @@ class PagerViewController: ASViewController<ASPagerNode> {
     init() {
         pagerNode = ASPagerNode()
         super.init(node: pagerNode)
-        
+    
         pagerNode.setDataSource(self)
         self.title = "Pager node"
     }
@@ -28,6 +28,9 @@ class PagerViewController: ASViewController<ASPagerNode> {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        dataSource.fetchUsers(completionHandler: { indices in
+            self.pagerNode.reloadData()
+        })
         // Do any additional setup after loading the view.
     }
 
@@ -41,8 +44,17 @@ extension PagerViewController : ASPagerDataSource {
     func numberOfPages(in pagerNode: ASPagerNode) -> Int {
         return dataSource.userViewModels.count
     }
+    
+    func pagerNode(_ pagerNode: ASPagerNode, nodeBlockAt index: Int) -> ASCellNodeBlock {
+        let userVM = dataSource.userViewModels[index]
+        return {
+            return PagerPhotoCellNode(userViewModel: userVM)
+        }
+    }
 }
 
 extension PagerViewController : ASPagerDelegate {
-    
+    func shouldBatchFetch(for collectionNode: ASCollectionNode) -> Bool {
+        return false
+    }
 }

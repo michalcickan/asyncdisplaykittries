@@ -61,6 +61,7 @@ class UserCellNode: ASCellNode {
         fullscreenPhotoNode.url = userViewModel.photoUrl(quality: .Full)
         fullscreenPhotoNode.placeholderFadeDuration = 2
         fullscreenPhotoNode.contentMode = .scaleAspectFill
+        fullscreenPhotoNode.style.preferredSize = self.bounds.size
         
     }
     
@@ -99,8 +100,13 @@ class UserCellNode: ASCellNode {
     // MARK: - Layout computing
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         // make fullscreen image ratio to 1:2
-        self.fullscreenPhotoNode.style.width = ASDimensionMake("100%")
+        //layout will take care of that
+        //self.fullscreenPhotoNode.style.width = ASDimensionMake("100%")
         let aspectLayout = ASRatioLayoutSpec(ratio: 1/2, child: self.fullscreenPhotoNode)
+        let fullscreenInsetLayout = ASInsetLayoutSpec(
+            insets: UIEdgeInsets(top: 10,left: 5,bottom: 0,right: 5),
+            child: aspectLayout
+        )
         
         //info layout
         var infoSpecElems = [nameNode]
@@ -120,7 +126,7 @@ class UserCellNode: ASCellNode {
             spacing: 5,
             justifyContent: .end,
             alignItems: .start,
-            children: [horizontalInfoLayout, self.textNode, aspectLayout]
+            children: [horizontalInfoLayout, self.textNode, fullscreenInsetLayout]
         )
         //in order to not let text node grow behind bounds, we need to set flex shrink, otherwise it won't calculate height and will continue behind right edge
         contentLayout.style.flexShrink = 1
@@ -139,5 +145,10 @@ class UserCellNode: ASCellNode {
             insets: UIEdgeInsets(top: 5,left: 5,bottom: 5,right: 5),
             child: avatarContentLayout
         )
+    }
+    
+    override func didEnterPreloadState() {
+        super.didEnterPreloadState()
+        print("Row preloading \(self.indexPath?.row)")
     }
 }

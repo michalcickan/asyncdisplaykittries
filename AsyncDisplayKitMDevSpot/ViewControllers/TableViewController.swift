@@ -24,7 +24,8 @@ class TableViewController: ASViewController<ASTableNode> {
         
         tableNode.delegate = self
         tableNode.dataSource = self
-        //tableNode.view.leadingScreensForBatching = 3
+        
+        tableNode.view.leadingScreensForBatching = 1
         // tabbar title
         self.title = "Table node"
     }
@@ -85,7 +86,7 @@ extension TableViewController : ASTableDelegate {
     func tableNode(_ tableNode: ASTableNode, constrainedSizeForRowAt indexPath: IndexPath) -> ASSizeRange {
         //width is not considered. It can be only width of tableview
         return ASSizeRange(
-            min: CGSize(width: 0, height: 44),
+            min: CGSize(width: 0, height: 100),
             max: CGSize(width: 0, height: CGFloat.infinity)
         )
     }
